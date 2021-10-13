@@ -34,15 +34,15 @@ public class Machine implements Serializable {
     private int id;
     private String brand;
     private int year;
-    @ManyToOne
-    @JoinColumn(name = "categoryId")
-    @JsonIgnoreProperties("machines")
+  //  @ManyToOne
+ //   @JoinColumn(name = "categoryId")
+ //   @JsonIgnoreProperties("machines")
     
     private int category_id;
     private String name;
     private String description;
-    @oneToMany(cascade = {cascadeType.PERSIST}, mappedBy)
-    private String message
+ //   @oneToMany(cascade = {cascadeType.PERSIST}, mappedBy)
+ //   private String message
 
 }
 
