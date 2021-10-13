@@ -5,12 +5,16 @@
  */
 package com.maquinaria.maquinaria.app.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -26,9 +30,14 @@ public class Client implements Serializable {
     private int id;
     @Column(length=50)
     private String name;
+    private int age;
     @Column(name="email",nullable=false,length=50,unique=true)
     private String email;
-    private int age;
+    private String password;
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="client")
+    @JsonIgnoreProperties("client")
+    private List<Message> messages;
+    
 
     public Client() {
     }
