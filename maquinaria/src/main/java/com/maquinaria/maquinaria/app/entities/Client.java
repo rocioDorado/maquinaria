@@ -16,69 +16,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author fdomoreno
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="client")
 public class Client implements Serializable {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idClient;
     @Column(length=50)
     private String name;
-    private int age;
-    @Column(name="email",nullable=false,length=50,unique=true)
+    
+    private Integer age;
+    @Column(length=400)
     private String email;
     private String password;
+    
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="client")
     @JsonIgnoreProperties("client")
     private List<Message> messages;
     
-
-    public Client() {
-    }
-
-    public Client(int id, String name, String email, int age) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.age = age;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }  
-    
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="client")
+    @JsonIgnoreProperties("client")
+    private List<Reservation> reservations;
 }

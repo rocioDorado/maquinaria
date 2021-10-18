@@ -9,45 +9,65 @@ import com.maquinaria.maquinaria.app.entities.Message;
 import com.maquinaria.maquinaria.app.services.MessageService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author fdomoreno
+ * @author 
  */
 @RestController
 @RequestMapping("Message")
 public class MessageController {
+   
     @Autowired
     private MessageService service;
     
+    /**
+     * GET
+     * @return 
+     */
     @GetMapping("/all")
-    public List<Message> findAllMessage(){
-        return service.getMessages();
+    public List<Message> getAll(){
+        return service.getAll();
     }
     
+    /**
+     * POST
+     * @return 
+     */
     @PostMapping("/save")
-    public ResponseEntity addMessage(@RequestBody Message message){
-        service.saveMessage(message);
-        return ResponseEntity.status(201).build();
+    @ResponseStatus(HttpStatus.CREATED)
+    public Message save(@RequestBody Message message) {
+        return service.save(message);
     }
     
+    /**
+     * PUT
+     * @param message
+     * @return 
+     */
     @PutMapping("/update")
-    public ResponseEntity updateMessage(@RequestBody Message message){
-        service.updateMessage(message);
-        return ResponseEntity.status(201).build();
+    @ResponseStatus(HttpStatus.CREATED)
+    public Message update(@RequestBody Message message) {
+        return service.update(message);
     }
     
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteMessage(@RequestBody Message message){
-        service.deleteMessage(message.getId());
-        return ResponseEntity.status(204).build();
+    /**
+     * DELETE
+     * @return 
+     */
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("idMessage") int idMessage) {
+        return service.deleteMessage(idMessage);
     }
+    
 }

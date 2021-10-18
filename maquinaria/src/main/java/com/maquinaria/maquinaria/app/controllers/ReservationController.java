@@ -5,8 +5,8 @@
  */
 package com.maquinaria.maquinaria.app.controllers;
 
-import com.maquinaria.maquinaria.app.entities.Client;
-import com.maquinaria.maquinaria.app.services.ClientService;
+import com.maquinaria.maquinaria.app.entities.Reservation;
+import com.maquinaria.maquinaria.app.services.ReservationService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,54 +22,54 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author fdomoreno
+ * @author Famiria-SAN
  */
 @RestController
-@RequestMapping("Client")
-public class ClientController {
-   
+@RequestMapping("Reservation")
+public class ReservationController {
+    
     @Autowired
-    private ClientService service;
+    private ReservationService service;
     
     /**
      * GET
      * @return 
      */
     @GetMapping("/all")
-    public List<Client> getClients(){
-        return service.getAll();
+    public List<Reservation> getReservations(){
+        return service.getAllReservations();
     }
     
     /**
      * POST
-     * @param client
+     * @param reservation
      * @return 
      */
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client save(@RequestBody Client client) {
-        return service.save(client);
+    public Reservation save(@RequestBody Reservation reservation) {
+        return service.save(reservation);
     }
     
     /**
      * PUT
-     * @param client
+     * @param reservation
      * @return 
      */
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Client update(@RequestBody Client client) {
-        return service.update(client);
+    public Reservation update(@RequestBody Reservation reservation) {
+        return service.update(reservation);
     }
     
     /**
      * DELETE
-     * @param clientId
+     * @param idReservation
      * @return 
      */
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int clientId) {
-        return service.deleteClient(clientId);
+    public boolean delete(@PathVariable("idReservation") int idReservation) {
+        return service.deleteReservation(idReservation);
     }
     
 }

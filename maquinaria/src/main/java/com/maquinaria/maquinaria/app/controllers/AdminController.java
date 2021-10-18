@@ -5,8 +5,8 @@
  */
 package com.maquinaria.maquinaria.app.controllers;
 
-import com.maquinaria.maquinaria.app.entities.Machine;
-import com.maquinaria.maquinaria.app.services.MachineService;
+import com.maquinaria.maquinaria.app.entities.Admin;
+import com.maquinaria.maquinaria.app.services.AdminService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,35 +20,34 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author Rocio Dorado
+ * @author Famiria-SAN
  */
 @RestController
-@RequestMapping("Machine")
-public class MachineController {
-    
+@RequestMapping("Admin")
+public class AdminController {
     @Autowired
-    private MachineService service;
+    private AdminService service;
     
     @GetMapping("/all")
-    public List<Machine> findAllMachine(){
-        return service.getMachines();
+    public List<Admin> findAllAdmin(){
+        return service.getAll();
     }
     
     @PostMapping("/save")
-    public ResponseEntity addMachine(@RequestBody Machine machine){
-        service.save(machine);
+    public ResponseEntity addAdmin(@RequestBody Admin admin){
+        service.save(admin);
         return ResponseEntity.status(201).build();
     }
     
     @PutMapping("/update")
-    public ResponseEntity updateMachine(@RequestBody Machine machine){
-        service.update(machine);
+    public ResponseEntity updateAdmin(@RequestBody Admin admin){
+        service.update(admin);
         return ResponseEntity.status(201).build();
     }
     
     @DeleteMapping("/delete")
-    public ResponseEntity deleteMachine(@RequestBody Machine machine){
-        service.deleteMachine(machine.getId());
+    public ResponseEntity deleteAdmin(@RequestBody Admin admin){
+        service.deleteAdmin(admin.getIdAdmin());
         return ResponseEntity.status(204).build();
     }
 }

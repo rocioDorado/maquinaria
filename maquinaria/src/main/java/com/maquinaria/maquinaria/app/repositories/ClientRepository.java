@@ -5,12 +5,51 @@
  */
 package com.maquinaria.maquinaria.app.repositories;
 import com.maquinaria.maquinaria.app.entities.Client;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.maquinaria.maquinaria.app.repositories.crud.ClientCrudRepository;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author 
- */
-public interface ClientRepository extends JpaRepository<Client,Integer> {
+
+@Repository
+public class ClientRepository {
+    @Autowired
+    private ClientCrudRepository clientCrudRepository;
+    
+    /**
+     * Select
+     * @return 
+     */
+    public List<Client> getAll(){
+        return (List<Client>) clientCrudRepository.findAll();
+    }
+    /**
+     * Buscar registro
+     * @param idClient
+     * @return 
+     */
+    public Optional<Client> getClient(int idClient){
+        return clientCrudRepository.findById(idClient);
+    }
+
+    /**
+     * Insert
+     * @param client
+     * @return 
+     */
+    public Client save(Client client){
+        return clientCrudRepository.save(client);
+    }
+    
+    
+    /**
+     * Delete
+     * @param client 
+     */
+    public void delete(Client client){
+        clientCrudRepository.delete(client);
+    }
+    
     
 }
