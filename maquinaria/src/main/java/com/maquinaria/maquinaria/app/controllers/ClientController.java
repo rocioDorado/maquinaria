@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author fdomoreno
+ * @author Rocio Dorado
  */
 @RestController
 @RequestMapping("Client")

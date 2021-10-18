@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author Famiria-SAN
+ * @author  Rocio Dorado
  */
 @RestController
 @RequestMapping("Reservation")

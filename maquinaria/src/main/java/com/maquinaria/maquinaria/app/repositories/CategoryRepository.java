@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Famiria-SAN
+ * @author  Rocio Dorado
  */
 @Repository
 public class CategoryRepository {

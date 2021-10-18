@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 
 /**
  *
- * @author fdomoreno
+ * @author  Rocio Dorado
  */
 @Data
 @AllArgsConstructor

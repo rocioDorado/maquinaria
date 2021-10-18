@@ -26,7 +26,7 @@ import lombok.NoArgsConstructor;
 
 /**
  *
- * @author Famiria-SAN
+ * @author  Rocio Dorado
  */
 @Data
 @AllArgsConstructor

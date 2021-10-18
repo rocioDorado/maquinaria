@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author 
+ * @author  Rocio Dorado
  */
 @Service
 public class ClientService {

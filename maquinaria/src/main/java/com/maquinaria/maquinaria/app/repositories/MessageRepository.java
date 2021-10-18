@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author 
+ * @author  Rocio Dorado
  */
 @Repository
 public class MessageRepository  {
