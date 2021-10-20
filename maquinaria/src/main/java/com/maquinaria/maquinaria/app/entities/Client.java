@@ -34,13 +34,16 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idClient;
+    
+    private String email;
+    
+    private String password;
+    
     @Column(length=50)
     private String name;
     
     private Integer age;
     @Column(length=400)
-    private String email;
-    private String password;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy="client")
     @JsonIgnoreProperties("client")
