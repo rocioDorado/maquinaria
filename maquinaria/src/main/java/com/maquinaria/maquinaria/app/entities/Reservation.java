@@ -47,5 +47,6 @@ public class Reservation implements Serializable{
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
-
+    
+    private Score score;
 }
