@@ -44,7 +44,7 @@ public class ClientService {
      * @return 
      */
     public Client save(Client client){
-        if(client.getIdClient() !=null){
+        if(client.getName()!=null && client.getEmail()!=null){
             return repository.save(client);
         }else{
             Optional<Client> resultado = repository.getClient(client.getIdClient());

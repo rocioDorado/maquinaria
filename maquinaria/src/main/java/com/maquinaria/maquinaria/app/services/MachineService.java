@@ -48,7 +48,7 @@ public class MachineService {
      * @return 
      */
     public Machine save(Machine machine){
-        if(machine.getId() !=null){
+        if(machine.getName() !=null && machine.getYear()!=null && machine.getBrand()!=null ){
             return repository.save(machine);
         }else{
             Optional<Machine> resultado = repository.getMachine(machine.getId());

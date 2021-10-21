@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -46,11 +47,16 @@ public class AdminController {
         service.update(admin);
         return ResponseEntity.status(201).build();
     }
-    
-    @DeleteMapping("/delete")
+    /*
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity deleteAdmin(@RequestBody Admin admin){
         service.deleteAdmin(admin.getIdAdmin());
         return ResponseEntity.status(204).build();
+    }*/
+     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int adminId) {
+        return service.deleteAdmin(adminId);
     }
 }
