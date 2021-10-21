@@ -10,7 +10,11 @@ import com.maquinaria.maquinaria.app.repositories.MachineRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  *
@@ -44,7 +48,7 @@ public class MachineService {
      * @return 
      */
     public Machine save(Machine machine){
-        if(machine.getId()==null){
+        if(machine.getId() !=null){
             return repository.save(machine);
         }else{
             Optional<Machine> resultado = repository.getMachine(machine.getId());
@@ -95,6 +99,8 @@ public class MachineService {
      * @param machineId
      * @return 
      */
+    
+   
     public boolean deleteMachine(int machineId) {
         Boolean aBoolean = getMachine(machineId).map(machine -> {
             repository.delete(machine);

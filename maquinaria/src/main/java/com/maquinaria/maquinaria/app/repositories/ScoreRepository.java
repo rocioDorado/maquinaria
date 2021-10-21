@@ -53,5 +53,9 @@ public class ScoreRepository {
     public void delete(Score score){
         scoreCrudRepository.delete(score);
     }
+
+    public boolean delete(int scoreId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

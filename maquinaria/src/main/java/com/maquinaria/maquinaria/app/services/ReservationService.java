@@ -10,7 +10,11 @@ import com.maquinaria.maquinaria.app.repositories.ReservationRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  *
@@ -44,7 +48,7 @@ public class ReservationService {
      * @return 
      */
     public Reservation save(Reservation reservation){
-        if(reservation.getIdReservation()==null){
+        if(reservation.getIdReservation() !=null){
             return repository.save(reservation);
         }else{
             Optional<Reservation> resultado = repository.getReservation(reservation.getIdReservation());
@@ -84,9 +88,10 @@ public class ReservationService {
     
     /**
      * DELETE
-     * @param clientId
+     * @param reservationId
      * @return 
      */
+
     public boolean deleteReservation(int clientId) {
         Boolean aBoolean = getReservation(clientId).map(client -> {
             repository.delete(client);

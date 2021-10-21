@@ -44,7 +44,7 @@ public class AdminService {
      * @return 
      */
     public Admin save(Admin admin){
-        if(admin.getIdAdmin()==null){
+        if(admin.getIdAdmin() !=null){
             return repository.save(admin);
         }else{
             Optional<Admin> resultado = repository.getAdmin(admin.getIdAdmin());
@@ -90,6 +90,7 @@ public class AdminService {
      * @param adminId
      * @return 
      */
+    
     public boolean deleteAdmin(int adminId) {
         Boolean aBoolean = getAdmin(adminId).map(admin -> {
             repository.delete(admin);

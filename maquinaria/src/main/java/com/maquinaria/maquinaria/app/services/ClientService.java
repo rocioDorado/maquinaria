@@ -44,7 +44,7 @@ public class ClientService {
      * @return 
      */
     public Client save(Client client){
-        if(client.getIdClient()==null){
+        if(client.getIdClient() !=null){
             return repository.save(client);
         }else{
             Optional<Client> resultado = repository.getClient(client.getIdClient());
@@ -92,6 +92,7 @@ public class ClientService {
      * @param clientId
      * @return 
      */
+    
     public boolean deleteClient(int clientId) {
         Boolean aBoolean = getClient(clientId).map(client -> {
             repository.delete(client);
