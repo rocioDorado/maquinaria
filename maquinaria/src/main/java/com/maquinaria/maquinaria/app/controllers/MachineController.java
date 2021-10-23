@@ -50,13 +50,6 @@ public class MachineController {
         service.update(machine);
         return ResponseEntity.status(201).build();
     }
-    /*
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity deleteMachine(@RequestBody Machine machine){
-        service.deleteMachine(machine.getId());
-        return ResponseEntity.status(204).build();
-    }*/
     
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

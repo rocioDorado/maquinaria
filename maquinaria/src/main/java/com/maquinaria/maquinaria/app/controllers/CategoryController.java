@@ -50,13 +50,8 @@ public class CategoryController {
         service.update(category);
         return ResponseEntity.status(201).build();
     }
-    /*
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity deleteCategory(@RequestBody Category category){
-        service.deleteCategory(category.getId());
-        return ResponseEntity.status(204).build();
-    }*/
+    
+    
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int categoryId) {

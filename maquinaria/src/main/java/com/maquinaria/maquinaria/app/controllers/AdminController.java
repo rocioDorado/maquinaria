@@ -49,13 +49,7 @@ public class AdminController {
         service.update(admin);
         return ResponseEntity.status(201).build();
     }
-    /*
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity deleteAdmin(@RequestBody Admin admin){
-        service.deleteAdmin(admin.getIdAdmin());
-        return ResponseEntity.status(204).build();
-    }*/
+    
      @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int adminId) {
