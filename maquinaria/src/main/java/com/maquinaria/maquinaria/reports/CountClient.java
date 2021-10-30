@@ -9,23 +9,23 @@ import com.maquinaria.maquinaria.app.entities.Client;
 
 /**
  *
- * @author Famiria-SAN
+ * @author Rocio Dorado
  */
 public class CountClient {
-    private Long totalClient;
+    private Long total;
     private Client client;
 
-    public CountClient(Long totalClient, Client client) {
-        this.totalClient = totalClient;
+    public CountClient(Long total, Client client) {
+        this.total = total;
         this.client = client;
     }
 
-    public Long getTotalClient() {
-        return totalClient;
+    public Long getTotal() {
+        return total;
     }
 
-    public void setTotalClient(Long totalClient) {
-        this.totalClient = totalClient;
+    public void setTotal(Long total) {
+        this.total = total;
     }
 
     public Client getClient() {
@@ -35,5 +35,7 @@ public class CountClient {
     public void setClient(Client client) {
         this.client = client;
     }
+
+    
 
 }
