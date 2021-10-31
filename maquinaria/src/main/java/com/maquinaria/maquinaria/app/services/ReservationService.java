@@ -92,24 +92,32 @@ public class ReservationService {
     
     /**
      * DELETE
-     * @param reservationId
+     * @param clientId
      * @return 
      */
-
     public boolean deleteReservation(int clientId) {
-        Boolean aBoolean = getReservation(clientId).map(client -> {
+        return getReservation(clientId).map(client -> {
             repository.delete(client);
             return true;
         }).orElse(false);
-        return aBoolean;
     }
 
+    /**
+     * StatusReservations
+     * @return new StatusReservations
+     */
     public StatusReservations getReportStatusReservations(){
         List<Reservation>completed= repository.ReservationStatus("completed");
         List<Reservation>cancelled= repository.ReservationStatus("cancelled");
         return new StatusReservations(completed.size(), cancelled.size());
     }
     
+    /**
+     * getReportsTimeReservations
+     * @param datoA
+     * @param datoB
+     * @return ArrayList
+     */
     public List<Reservation> getReportsTimeReservations(String datoA, String datoB){
         SimpleDateFormat parser=new SimpleDateFormat ("yyyy-MM-dd");
         Date datoUno = new Date();
@@ -129,6 +137,10 @@ public class ReservationService {
         }
     }  
     
+    /**
+     * serviceTopClients
+     * @return List
+     */
     public List<CountClient> serviceTopClients(){
         return repository.getTopClients();
     }
