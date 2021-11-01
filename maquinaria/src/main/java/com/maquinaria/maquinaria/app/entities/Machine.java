@@ -34,7 +34,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="machine")
 public class Machine implements Serializable {
-    
+    /**
+    *
+    * @Id llave primaria de la tabla Machine  
+    */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -44,16 +47,30 @@ public class Machine implements Serializable {
     private Integer year;
     private String description;
     
+    /**
+    *
+    * @ManyToOne Relación con la tabla Category
+    */
+    
     @ManyToOne
     @JoinColumn(name="categoryId")
     @JsonIgnoreProperties("machines")
     private Category category;
 
-
+    /**
+    *
+    * @OneToMany Relación con la tabla Client
+    */
+    
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "machine")
     @JsonIgnoreProperties({"machine","client"})
     private List<Message> messages;
-
+    
+    /**
+    *
+    * @OneToMany Relación con la tabla Message
+    */
+    
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "machine")
     @JsonIgnoreProperties({"machine","messages"})
     public List<Reservation> reservations;
