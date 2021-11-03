@@ -41,10 +41,27 @@ public class Machine implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    /**
+    *
+    * name
+    */
     private String name;
+    /**
+    *
+    * @Column brand 
+    */
     @Column (name="brand", length=45)
     private String brand;
+    
+    /**
+    *
+    * year
+    */
     private Integer year;
+    /**
+    *
+    * description
+    */
     private String description;
     
     /**

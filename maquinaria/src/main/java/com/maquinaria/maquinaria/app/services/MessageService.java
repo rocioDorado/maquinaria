@@ -67,11 +67,18 @@ public class MessageService {
      * @return 
      */
     public Message update(Message message){
+        System.out.println(message.getIdMessage());
+        System.out.println(message.getMessageText());
+        System.out.println(message.getMachine().getName());
+        System.out.println(message.getClient().getName());
+        
         if(message.getIdMessage()!=null){
             Optional<Message> resultado = repository.getMessage(message.getIdMessage());
             if(resultado.isPresent()){
-                if(message.getMessageText()!=null){
+                if(message.getMessageText()!= null && message.getMachine() != null && message.getClient() != null){
                     resultado.get().setMessageText(message.getMessageText());
+                    resultado.get().setMachine(message.getMachine());
+                    resultado.get().setClient(message.getClient());
                 }
                 
                 repository.save(resultado.get());
