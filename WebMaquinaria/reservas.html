@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+    <title>Reservaciones</title>
+    <link rel="import" href="menu.html" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/estilos.css" />
+  </head>
+  <body>
+    <div w3-include-html="menu.html"></div>
+<label>STARTDATE: Escoja la Fecha Inicio de la Reservacion</label>
+<input class="controlReservation" type="date" id="startDate" placeholder="startDate"><br>
+<label>DEVOLUTIONDATE: Escoja la Fecha Devolucion de la Reservacion</label>
+<input class="controlReservation" type="date" id="devolutionDate" placeholder="devolutionDate"><br>
+<label>STATUS: Estado de la Reservacion "completed / cancelled</label>
+<input class="controlReservation" type="text" id="status" placeholder="escriba completed o cancelled para el estado de la Reservacion ">
+
+<select id="select-client"></select>
+    <script type="text/javascript">
+        window.onload = autoInicioRelacionCliente();
+    </script>
+        <select id="select-skate"></select>
+        <script type="text/javascript">
+            window.onload = autoInicioSkate();
+        </script>
+ <button onclick=" agregarReservation()">Guardar Reserva</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/reservas.js"></script>
+    <script>
+      w3IncludeHTML();
+    </script>
+  </body>
+</html>

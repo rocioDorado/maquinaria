@@ -69,33 +69,40 @@ function consultarCatgorias() {
 
 function crearMaquina() {
   var id = $("#id").val();
+  $("id").attr("disabled", "disabled");
   var brand = $("#brand").val();
   var year = $("#year").val();
   var description = $("#description").val();
   var category_id = $("#category").val();
   var name = $("#name").val();
-  const machineData = {
-    brand: brand,
-    year: year,
-    category: { id: category_id },
-    name: name,
-    description: description,
-  };
-  console.log(JSON.stringify(machineData));
-  $.ajax({
-    url: "http://" + varURL + "/api/Machine/save",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    type: "POST",
-    dataType: "json",
-    data: JSON.stringify(machineData),
-    statusCode: {
-      201: function () {
-        cargarMaquinas();
-      },
-    },
-  });
+  if (brand == "" || year == "" || description == "" || name  == "" || category_id  == "0") {
+    alert('Para crear la máquina, es necesario llenar todos los campos.');
+    return false;
+  } else {
+      const machineData = {
+        brand: brand,
+        year: year,
+        category: { id: category_id },
+        name: name,
+        description: description,
+      };
+      console.log(JSON.stringify(machineData));
+      $.ajax({
+        url: "http://" + varURL + "/api/Machine/save",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify(machineData),
+        statusCode: {
+          201: function () {
+            cargarMaquinas();
+            alert("La máquina ha sido creada.");
+          },
+        },
+      });
+    }
 }
 //Esta función llena los campos con los valores de la maquina seleccionada en la tabla para editar
 async function editarMaquina(value) {
@@ -104,12 +111,12 @@ async function editarMaquina(value) {
   const maquina = listaMaquinas.find((element) => element.id === value);
   console.log(maquina);
   $("#id").val(maquina.id);
-  $("#id").attr("readonly", false);
+  $("id").attr("disabled", "disabled");
   $("#brand").val(maquina.brand);
   $("#year").val(maquina.year);
-  $("#category option:eq(" + maquina.category.id + ")").attr(
+  $("#category option[value=" + maquina.category.id + "]").prop(
     "selected",
-    "selected"
+    true
   );
   $("#name").val(maquina.name);
   $("#description").val(maquina.description);
@@ -118,40 +125,47 @@ async function editarMaquina(value) {
 
 function actualizarMaquina() {
   var id = $("#id").val();
+  $("id").attr("disabled", "disabled");
   var brand = $("#brand").val();
   var year = $("#year").val();
   var name = $("#name").val();
   var category_id = $("#category").val();
   var description = $("#description").val();
-  var data = {
-    id: id,
-    brand: brand,
-    year: year,
-    category: { id: category_id },
-    description: description,
-    name: name,
-  }; //Creamos un objeto con los datos a actualizar.
-  $.ajax({
-    url: "http://" + varURL + "/api/Machine/update",
-    type: "PUT",
-    dataType: "json",
-    data: JSON.stringify(data), //convertimos el objeto a un string para que sea compatible con el formato de la API.
-    headers: {
-      "Content-Type": "application/json",
-    },
-    statusCode: {
-      201: function () {
-        $("#id").val("");
-        $("#id").attr("readonly", false);
-        $("#brand").val("");
-        $("#year").val("");
-        $("#category").val("");
-        $("#name").val("");
-        $("#description").val("");
-        cargarMaquinas();
-      },
-    },
-  });
+  if (brand == "" || year == "" || description == "" || name  == "" || category_id  == "0") {
+    alert('Para actualizar la máquina, es necesario llenar todos los campos.');
+    return false;
+  } else {
+      var data = {
+        id: id,
+        brand: brand,
+        year: year,
+        category: { id: category_id },
+        description: description,
+        name: name,
+      }; //Creamos un objeto con los datos a actualizar.
+      $.ajax({
+        url: "http://" + varURL + "/api/Machine/update",
+        type: "PUT",
+        dataType: "json",
+        data: JSON.stringify(data), //convertimos el objeto a un string para que sea compatible con el formato de la API.
+        headers: {
+          "Content-Type": "application/json",
+        },
+        statusCode: {
+          201: function () {
+            $("#id").val("");
+            $("#id").attr("readonly", false);
+            $("#brand").val("");
+            $("#year").val("");
+            $("#category").val("");
+            $("#name").val("");
+            $("#description").val("");
+            cargarMaquinas();
+            alert("el registro ha sido actualizado.");
+          },
+        },
+      });
+    }
 }
 
 function eliminarMaquina(idMaquina) {
@@ -166,7 +180,7 @@ function eliminarMaquina(idMaquina) {
       success: function (respuesta) {
         $("#tabla").empty();
         cargarMaquinas();
-        alert("el registro ha sido eliminado");
+        alert("el registro ha sido eliminado.");
       },
     });
   }
