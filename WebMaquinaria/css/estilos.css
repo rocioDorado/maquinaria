@@ -1,0 +1,20 @@
+body {
+  background-color: #fff;
+}
+
+table {
+  border: 1px solid #000;
+  border-collapse: collapse;
+  width: 100%;
+}
+th {
+  text-align: center;
+  border: 1px solid #000;
+}
+tr {
+  border: 1px solid #000;
+}
+
+td {
+  border: 1px solid #000;
+}
